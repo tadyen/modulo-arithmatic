@@ -6,14 +6,14 @@ You can look up better definitions on wikipedia or whatever. Anyways we shall wo
 
 Let $\Pi\{N, A, B, C\} $ where $\Pi\{\ldots\text{<elements>}\}$ means each element in the set are Co-prime to each other
 
-then Chinese Remainder Theorem (CNR) loosely states the following:
+then Chinese Remainder Theorem (CRT) loosely states the following:
 
 
 We have an unknown number N
 But we know information of the remainder of N if divided by some numbers. Eg.
 
-$$  N \text{ % } A = R_{A}   $$
-$$  N \text{ % } B = R_{B}   $$
+$$  N \text{ \% } A = R_{A}   $$
+$$  N \text{ \% } B = R_{B}   $$
 
 where $R_{A}, R_{B}$ are remainders, then N has the form:
 

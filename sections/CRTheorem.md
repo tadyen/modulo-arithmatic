@@ -4,7 +4,7 @@
 
 You can look up better definitions on wikipedia or whatever. Anyways we shall work with natural numbers and integers from here on.
 
-Let $\Pi\{N, A, B, C\} $ where $\Pi\{\ldots\text{<elements>}\}$ means each element in the set are Co-prime to each other
+Let $\Pi\{N, A, B, C\}$ where $\Pi\{\ldots\text{\<elements\>}\}$ means each element in the set are Co-prime to each other
 
 then Chinese Remainder Theorem (CRT) loosely states the following:
 

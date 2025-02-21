@@ -9,10 +9,10 @@ Note:
 I use two of the following notations around, but there is a difference between them:
 
 1.
-$$  14 \text{ mod } 4 == 14 \% 4 = 2  $$
+$$  14 \text{ mod } 4 == 14 \text{ % } 4 = 2  $$
 
 2.
-$$  14 \% 4 \pmod{4} = 2 \pmod{4} \neq{} 2  $$
+$$  14 \text{ % } 4 \pmod{4} = 2 \pmod{4} \neq{} 2  $$
 
 The first example is a static value which has lost the context of its modulo environment.
 The second shows that the value maintains the modulo context, and is different to the static value.
@@ -43,14 +43,14 @@ $$   3 \text{ % } 7 = 3 \pmod{7} = -4 \pmod{7}    $$
 
 More usually positive only form:
 
-$$   A \% B = \begin{cases}
+$$   A \text{ % } B = \begin{cases}
         A       & \text{if $A < B$}   \\
         B - A   & \text{if $A \ge{} B$} 
 \end{cases} $$
 
 Or otherwise including negative:
 
-$$   A \% B = \begin{cases}
+$$   A \text{ % } B = \begin{cases}
         A       & \pmod{B}    \\
         B - A   & \pmod{B} \text{ negative equivalent} 
 \end{cases}
@@ -70,44 +70,39 @@ $$   ( A . B ) \text{ % } C \pmod{C} = ( (A \text{ % } C) . (B \text{ % } C ) \p
 
 eg.
 
-$$   (7 * 11) \% 4 = 77 \% 4 = 1 \pmod{4}   $$
-$$   (7 * 11) \% 4 = (7 \% 4) * (11 \% 4) \pmod{4} = (3 * 3) \% 4 \pmod{4} = 9 \% 4 = 1 \pmod{4}  $$
+$$   (7 * 11) \text{ % } 4 = 77 \text{ % } 4 = 1 \pmod{4}   $$
+$$   (7 * 11) \text{ % } 4 = (7 \text{ % } 4) * (11 \text{ % } 4) \pmod{4} = (3 * 3) \text{ % } 4 \pmod{4} = 9 \text{ % } 4 = 1 \pmod{4}  $$
 
 ## NOT Commutative (operand swap)
 
-$$  ( A \% B) \neq{} ( B \% A)  $$
+$$  ( A \text{ % } B) \neq{} ( B \text{ % } A)  $$
 
 ## NOT Commutative in operation chain
 
-$$   (A \% B) \% C  \neq{} (A \% C) \% B    $$
+$$   (A \text{ % } B) \text{ % } C  \neq{} (A \text{ % } C) \text{ % } B    $$
 
 eg. 
 without mod context:
 
-$$   ( 14 \% 4) \% 5 = (2) \% 5 = 2 \pmod{5}    $$
-$$   ( 14 \% 5) \% 4 = (4) \% 4 = 0 \pmod{4}    $$
+$$   ( 14 \text{ % } 4) \text{ % } 5 = (2) \text{ % } 5 = 2 \pmod{5}    $$
+$$   ( 14 \text{ % } 5) \text{ % } 4 = (4) \text{ % } 4 = 0 \pmod{4}    $$
 
 with mod context (gets giga messy):
 
-$$  ( 14 \% 4) \% 5 = (2 \text{mod 4}) \% 5 = (2 + 4k_{A}) \% 5 \pmod{5}    $$
-$$  ( 14 \% 5) \% 4 = (4 \text{mod 5}) \% 4 = (4 + 5k_{B}) \% 4 \pmod{4} = k_{B} \pmod{4}    $$
+$$  ( 14 \text{ % } 4) \text{ % } 5 = (2 \text{mod 4}) \text{ % } 5 = (2 + 4k_{A}) \text{ % } 5 \pmod{5}    $$
+$$  ( 14 \text{ % } 5) \text{ % } 4 = (4 \text{mod 5}) \text{ % } 4 = (4 + 5k_{B}) \text{ % } 4 \pmod{4} = k_{B} \pmod{4}    $$
 
 $$  \text{let $k_{A}$ = 3, $k_{B}$ = 2 then: }     $$
 
-$$  (2 + 4k_{A}) \% 5 \pmod{5} = 14 \% 5 = 4 \pmod{5} \ni 14      $$
-$$  (k_{B}) \% 4 \pmod{4} = 2 \% 4 = 2 \pmod{4}   \ni 14    \text{  (agrees with above)}    $$
+$$  (2 + 4k_{A}) \text{ % } 5 \pmod{5} = 14 \text{ % } 5 = 4 \pmod{5} \ni 14      $$
+$$  (k_{B}) \text{ % } 4 \pmod{4} = 2 \text{ % } 4 = 2 \pmod{4}   \ni 14    \text{  (agrees with above)}    $$
 
 ## NOT Associative
 
-$$   ( A \% B) \% C \neq{} A \% (B \% C)   $$
+$$   ( A \text{ % } B) \text{ % } C \neq{} A \text{ % } (B \text{ % } C)   $$
 
 eg.
 
-$$   ( 13 \% 7) \% 4 = 6 % 4 = 2    $$
-$$   13 \% (7 \% 4) = 13 \% 3 = 1   $$
-
-
-
-
-
+$$   ( 13 \text{ % } 7) \text{ % } 4 = 6 % 4 = 2    $$
+$$   13 \text{ % } (7 \text{ % } 4) = 13 \text{ % } 3 = 1   $$
 

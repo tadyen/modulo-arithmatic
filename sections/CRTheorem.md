@@ -4,7 +4,7 @@
 
 You can look up better definitions on wikipedia or whatever. Anyways we shall work with natural numbers and integers from here on.
 
-Let $ \Pi\{N, A, B, C\} $ where $\Pi\{\ldots\text{<elements>}\}$ means each element in the set are Co-prime to each other
+Let $\Pi\{N, A, B, C\} $ where $\Pi\{\ldots\text{<elements>}\}$ means each element in the set are Co-prime to each other
 
 then Chinese Remainder Theorem (CNR) loosely states the following:
 
@@ -12,8 +12,8 @@ then Chinese Remainder Theorem (CNR) loosely states the following:
 We have an unknown number N
 But we know information of the remainder of N if divided by some numbers. Eg.
 
-$$  N \% A = R_{A}   $$
-$$  N \% B = R_{B}   $$
+$$  N \text{ % } A = R_{A}   $$
+$$  N \text{ % } B = R_{B}   $$
 
 where $R_{A}, R_{B}$ are remainders, then N has the form:
 
@@ -21,10 +21,10 @@ $$  N = kAB + C      \tag*{$k \in \Bbb{Z}$}    $$
 
 simple proof:
 
-let $ N = kAB + C $ then
+let $N = kAB + C$ then
 
-$$ N \% A = (kAB + C) \% A = C \% A \tag*{where $C \% A = R_{A}$} $$
-$$ N \% B = (kAB + C) \% B = C \% B \tag*{where $C \% B = R_{B}$} $$
+$$ N \text{ % } A = (kAB + C) \text{ % } A = C \text{ % } A \tag*{where $C \text{ % } A = R_{A}$} $$
+$$ N \text{ % } B = (kAB + C) \text{ % } B = C \text{ % } B \tag*{where $C \text{ % } B = R_{B}$} $$
 
 Example: Given the following:
 
@@ -56,41 +56,41 @@ func main(){
 }
 ```
 
-## Solution to the CNR coefficient:
+## Solution to the CRT coefficient:
 
-let $ \{x,y,A,B,C,N,R_{A},R_{B}, \Delta_{R}\}\in\Bbb{Z} $
+let $\{x,y,A,B,C,N,R_{A},R_{B}, \Delta_{R}\}\in\Bbb{Z}$
 
 then N has the forms\:
 
-$$  \begin{split}
+$$\begin{split}
     N   &= \omega k + \theta    \mod{\{A,B\}}   \\
         &= kAB + \theta         \mod{\{A,B\}}
-\end{split} $$ 
+\end{split}$$
 
 where N is a periodic function (think $\omega$ as angular freq, $\theta$ as phase):
 - $ \omega = AB $
 - $ k := \text{range}\{\Bbb{Z}\}    $
 - $ \theta \in \Bbb{Z} = R_{A,B} \mod{\{A,B\}} $
 
-more precisely, $ \omega = \frac{LCM(A,B)}{HCF(A,B)} $
+more precisely, $\omega = \frac{LCM(A,B)}{HCF(A,B)}$
 
 and $x,y$ are arbitrary values, $R_{A,B}$ are remainders respectively: 
 
-$$  \begin{split}
+$$\begin{split}
     N   &= Ax + R_{A}   = R_{A}  \mod{A} \\
         &= By + R_{B}   = R_{B}  \mod{B} \\
     \implies N  &= Ax + R_{A} = By + R_{B}   
-\end{split} $$
+\end{split}$$
 
 since: 
 
-$$ \begin{split}
+$$\begin{split}
     Ax &= 0 \mod{A} \\
     By &= 0 \mod{B} \\
     kAB &= 0 \mod{\{A,B\}}
-\end{split} $$
+\end{split}$$
 
-let $ \Delta_{R} = R_{A} - R_{B} $
+let $\Delta_{R} = R_{A} - R_{B}$
 
 then:
 $$\begin{split}
@@ -98,14 +98,14 @@ $$\begin{split}
 \implies             By &= Ax + \Delta_{R}  \\
 \implies    Ax + \Delta{R}  &= \text{ (multiple of B)}  \\
             By - \Delta{R}  &= \text{ (multiple of A)}
-\end{split} $$
+\end{split}$$
 
-let $ x = Bk + x_{0} $, then:
-$$ \begin{split}
+let $x = Bk + x_{0}$, then:
+$$\begin{split}
             By          &= kAB + Ax_{0} + \Delta_{R}    \\
 \implies    By + R_{B}  &= \omega k + ( Ax_{0} + R_{A} )    \\
 \implies    \theta &= N |_{k=0}  \\
-\end{split} $$
+\end{split}$$
 
 which means there is no further analytical solution through this method. The solution with this method here-on is trial-n-error / iterative based.
 
@@ -164,7 +164,7 @@ Solution for reference: N = 105k + 23
 Reduce the statements to 2 sets:
 -> {N=2mod3, N=3mod5} && {N=2mod7}
 since we know the first already, this is equivalent to:
--> { N = 15mod8 } && { N = 2mod7 }
+-> { N = 8mod15 } && { N = 2mod7 }
 
 Note: {15,7} are coprime so we do not need to use LCM/HCF.
 
